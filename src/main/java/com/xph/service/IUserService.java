@@ -22,4 +22,7 @@ public interface IUserService {
 
     //根据用户名删除账户
     public int deleteUserByUsername(String username) throws Exception;
+
+    //测试事务回滚用的
+    public void transactionManager(User user1,User user2)throws Exception;
 }

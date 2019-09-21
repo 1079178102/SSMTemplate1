@@ -40,4 +40,15 @@ public class UserServiceTest {
         userService.deleteUserByUsername("jj");
     }
 
+    @Test
+    public void transactionManagerTest() throws Exception {
+//        User user1 = new User(null,"3113","3113",null);
+//        User user2 = new User(null,"123456","123456",null);
+
+        User user1 = new User(null,"3113","777",null);
+        User user2 = new User(null,"123456","888",null);
+
+        userService.transactionManager(user1,user2);
+
+    }
 }

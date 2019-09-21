@@ -33,4 +33,11 @@ public class UserService implements IUserService {
     public int deleteUserByUsername(String username) throws Exception{
         return userDao.deleteUserByUsername(username);
     }
+
+    @Override
+    public void transactionManager(User user1, User user2) throws Exception {
+        userDao.updatePasswordByUsername(user1);
+        int i = 1 / 0 ;
+        userDao.updatePasswordByUsername(user2);
+    }
 }
