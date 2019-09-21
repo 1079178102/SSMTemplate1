@@ -1,7 +1,7 @@
 package com.xph.test;
 
 import com.xph.bean.User;
-import com.xph.dao.IUserDao;
+import com.xph.service.impl.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,40 +12,32 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-public class UserDaoTest {
+public class UserServiceTest {
 
     @Autowired
-    IUserDao userDao;
+    UserService userService;
 
     @Test
     public void findAll() throws Exception {
-        List<User> users = userDao.findAll();
+        List<User> users = userService.findAll();
         users.forEach(i-> System.out.println(i));
     }
 
     @Test
     public void addUser() throws Exception {
-        User user = new User();
-        user.setUsername("jj");
-        user.setPassword("jiji");
-        user.setStatus(1);
-        int i = userDao.addUser(user);
-        System.out.println("addUser:[" + i + "]");
+        User user = new User(null,"jj","123",1);
+        userService.addUser(user);
     }
 
     @Test
     public void updatePasswordByUsername() throws Exception {
-        User user = new User();
-        user.setUsername("3113");
-        user.setPassword("123");
-        int i = userDao.updatePasswordByUsername(user);
-        System.out.println("updatePasswordByUsername:[" + i + "]");
+        User user = new User(null,"3113","3113",null);
+        userService.updatePasswordByUsername(user);
     }
 
     @Test
     public void deleteUserByUsername() throws Exception {
-        int i = userDao.deleteUserByUsername("jj");
-        System.out.println("deleteUserByUsername:[" + i + "]");
+        userService.deleteUserByUsername("jj");
     }
 
 }

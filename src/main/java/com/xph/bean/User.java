@@ -6,6 +6,16 @@ public class User {
     private String password;
     private Integer status;
 
+    public User() {
+    }
+
+    public User(Integer id, String username, String password, Integer status) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "User{" +
