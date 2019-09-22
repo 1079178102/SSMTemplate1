@@ -17,7 +17,7 @@
     <context:component-scan base-package="com.xph.dao"/>
 
     <!-- 配置数据库连接池 -->
-    <context:property-placeholder location="dbconfig.properties"/>
+    <context:property-placeholder location="classpath:dbconfig.properties"/>
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="${jdbc.driverClass}"/>
         <property name="url" value="${jdbc.jdbcUrl}"/>
@@ -28,7 +28,7 @@
     <!--配置生产SqlSession对象的工厂-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value="mybatis-config.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
     <!-- 扫描接口包路径，生产包下所有接口的代理对象，并且放入spring容器中 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

@@ -1,6 +1,8 @@
 package com.xph.controller;
 
 import com.xph.bean.User;
+import com.xph.service.impl.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,12 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping("/login")
     public String login(User user){
-        System.out.println(user.toString());
-        if("123".equals(user.getUsername()) && "123".equals(user.getPassword()))
+        int userByUsernamePassword = userService.findUserByUsernamePassword(user);
+        if (userByUsernamePassword == 1){
             return "success";
-        else
+        }else{
             return "error";
+        }
     }
 }

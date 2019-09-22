@@ -25,4 +25,7 @@ public interface IUserService {
 
     //测试事务回滚用的
     public void transactionManager(User user1,User user2)throws Exception;
+
+    //验证用户登录
+    public int findUserByUsernamePassword(User user);
 }

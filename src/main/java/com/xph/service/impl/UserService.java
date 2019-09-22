@@ -40,4 +40,9 @@ public class UserService implements IUserService {
         int i = 1 / 0 ;
         userDao.updatePasswordByUsername(user2);
     }
+
+    @Override
+    public int findUserByUsernamePassword(User user) {
+        return userDao.findUserByUsernamePassword(user);
+    }
 }

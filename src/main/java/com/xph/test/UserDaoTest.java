@@ -18,6 +18,13 @@ public class UserDaoTest {
     IUserDao userDao;
 
     @Test
+    public void login(){
+        User user = new User(null,"3113","3113",null);
+        int count = userDao.findUserByUsernamePassword(user);
+        System.out.println(count);
+    }
+
+    @Test
     public void findAll() throws Exception {
         List<User> users = userDao.findAll();
         users.forEach(i-> System.out.println(i));

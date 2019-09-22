@@ -22,4 +22,8 @@ public interface IUserDao {
     //根据用户名删除账户
     @Delete("delete from users where username = #{username}")
     public int deleteUserByUsername(String username) throws Exception;
+
+    //验证用户登录
+    @Select("select count(*) from users where username = #{username} and password = #{password}")
+    public int findUserByUsernamePassword(User user);
 }
