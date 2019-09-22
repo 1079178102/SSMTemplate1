@@ -22,4 +22,14 @@ public class UserController {
             return "error";
         }
     }
+
+    @RequestMapping("/register")
+    public String register(User user) throws Exception {
+        user.setStatus(1);
+        int i = userService.addUser(user);
+        if (i == 1)
+            return "login";
+        else
+            return "error";
+    }
 }
